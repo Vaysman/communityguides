@@ -12,5 +12,4 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'will_paginate'
-gem 'RedCloth'
-gem 'coderay'
+gem 'validate_url'
