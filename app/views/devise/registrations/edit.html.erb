@@ -8,9 +8,7 @@
 
   <p>CommunityGuides uses <%= link_to 'Gravatar', 'http://www.gravatar.com' %> in conjunction with your email-address to show your avatar. You can set / change your avatar at Gravatar.<br /><%= image_tag gravatar(resource.email, 64) %></p>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+
 
   <p><%= f.label 'name', 'Firstname Lastname' %><span>(displayed in your articles / comments)</span><br />
   <%= f.text_field :fullname %></p>
@@ -30,8 +28,10 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+  <% if f.object.encrypted_password.present? %>
+    <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password %></div>
+  <% end %>
 
   <div><%= f.submit "Update", :class => "awesome custom" %></div>
 <% end %>

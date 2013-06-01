@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530044326) do
+ActiveRecord::Schema.define(:version => 20130601023902) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20130530044326) do
   add_index "ratings", ["article_id"], :name => "index_ratings_on_article_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",   :null => false
+    t.string   "encrypted_password",     :default => "",   :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -78,9 +78,13 @@ ActiveRecord::Schema.define(:version => 20130530044326) do
     t.string   "fullname"
     t.text     "shortbio"
     t.string   "weburl"
-    t.integer  "country_id",             :default => 1,  :null => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.integer  "country_id",             :default => 1,    :null => false
+    t.string   "username"
+    t.boolean  "haslocalpw",             :default => true, :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -1,5 +1,8 @@
 Communityguides::Application.routes.draw do
-  devise_for :users, :controllers => { :registrations => "users/registrations" }
+  
+
+  devise_for :users, :controllers => { :registrations => "users/registrations",
+                                       :omniauth_callbacks => "omniauth_callbacks" }
 
   resources :admin, :only => [:index] do
     member do
@@ -25,6 +28,8 @@ Communityguides::Application.routes.draw do
     resources :comments, :only => [:create, :destroy]
     resources :ratings, :only => [:create, :update, :destroy]
   end
+
+  
   root :to => "articles#index"
 
   # The priority is based upon order of creation:

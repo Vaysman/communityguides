@@ -18,7 +18,7 @@
           <%= request.path == myarticles_articles_path ? raw("<li class='selected'>") : raw("<li>") %>
               <%= link_to "My Articles", myarticles_articles_path %>
           </li>
-          <li><%= link_to "Sign out", destroy_user_session_path %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
         <% else %> 
           <%= request.path == new_user_registration_path ? raw("<li class='selected'>") : raw("<li>") %>
                 <%= link_to "Sign up", new_user_registration_path %>

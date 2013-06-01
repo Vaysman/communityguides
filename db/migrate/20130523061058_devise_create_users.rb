@@ -38,7 +38,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.text :shortbio
       t.string :weburl
       t.integer :country_id, :null => false, :default => 1  # foreign key to country table 
+      t.string :username
 
+      # haslocalpw
+      t.boolean :haslocalpw, :null => false, :default => true
+      
       t.timestamps
     end
     add_index :users, :fullname
